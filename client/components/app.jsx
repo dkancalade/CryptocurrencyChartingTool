@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import DateValidator from 'datevalidator';
-console.log('DateValidator', DateValidator);
 import Chart from 'chart.js';
 import DisplayChart from './displayChart.jsx';
 import RequestChart from './requestChart.jsx';
@@ -49,28 +48,20 @@ class App extends Component {
 
   handleDateChange(target) {
     if (target.id ==='starting-date') {
-      this.setState({startDate: target.value}, () => {
-        // console.log('current Start Date', this.state.startDate);
-      });
+      this.setState({startDate: target.value});
     }
 
     if (target.id ==='ending-date') {
-      this.setState({endDate: target.value}, () => {
-        // console.log('current End Date', this.state.endDate);
-      });
+      this.setState({endDate: target.value});
     }
   }
 
   selectCurrency (type) {
-    this.setState({currencyType: type}, () => {
-      // console.log('currency symbol', this.state.currencyType);
-    });
+    this.setState({currencyType: type});
   }
 
   selectCrypto (name) {
-    this.setState({currencyType: name}, () => {
-      // console.log('currency symbol', this.state.cryptoName);
-    });
+    this.setState({currencyType: name});
   }
 
   createDateLabels(dateIds) {
@@ -118,7 +109,6 @@ class App extends Component {
                 labels: this.state.dataIds,
                 datasets: [{
                   label: `my ${this.state.cryptoName} dataset`,
-                  // backgroundColor: 'rgb(255, 99, 132)',
                   borderColor: 'rgb(66, 174, 169)',
                   data: this.state.dataValues
                 }]
@@ -128,7 +118,7 @@ class App extends Component {
           });
         })
         .catch((err)=> {
-          console.log('error', err);
+          throw (err);
         });
     }
     else {
